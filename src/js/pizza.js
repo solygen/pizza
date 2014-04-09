@@ -64,32 +64,41 @@
         return cont;
     };
 
-    var getResult = function (size, price, pieces) {
+    var setContent = function (container, list, prices) {
 
-        var row = $.create('div'),
-            nsize = $.create('div'),
-            nprice = $.create('div'),
-            npieces = $.create('div'),
+        var row, nsize, nprice, npieces, nlabel,
+            min = Math.min.apply(null, prices);
+
+        list.forEach(function (item) {
+
+            row = $.create('div');
+            nsize = $.create('div');
+            nprice = $.create('div');
+            npieces = $.create('div');
             nlabel = $.create('div');
 
-        row.className = 'row ' + size;
-        nsize.className = 'size col-xs-2';
-        nprice.className = 'price col-xs-3';
-        npieces.className = 'pieces col-xs-4';
-        nlabel.className = 'label col-xs-3';
+            row.className = 'row ' + item.size;
+            nsize.className = 'size col-xs-2';
+            nprice.className = 'price col-xs-3';
+            npieces.className = 'pieces col-xs-4';
+            nlabel.className = 'red col-xs-3';
 
-        nlabel.setAttribute('data-price', price);
+            nsize.innerText = item.size;
+            nprice.innerText = item.price + ' €';
+            npieces.innerText = item.pieces + ' pieces';
+            if (min !== item.price) {
+                nlabel.innerText = (Math.round(((item.price * item.pieces) - (min * item.pieces)) * 100)/100) + ' €';
+            } else {
+                row.className = row.className + ' green';
+            }
 
-        nsize.innerText = size;
-        nprice.innerText = price + ' €';//' a piece';
-        npieces.innerText = pieces + ' pieces';
+            row.appendChild(nsize);
+            row.appendChild(nprice);
+            row.appendChild(nlabel);
+            row.appendChild(npieces);
 
-        row.appendChild(nsize);
-        row.appendChild(nprice);
-        row.appendChild(npieces);
-        row.appendChild(nlabel);
-
-        return row;
+            container.appendChild(row);
+        });
     };
 
 
@@ -114,7 +123,8 @@
 
     var getNode = function (data) {
         var container = getContainer(),
-            prices = [];
+            prices = [],
+            list = [];
         for (var i = keys.length; i > 0; i--) {
             var size = keys[i-1],
                 price = Math.round(data[size].price_norm_piece*100,2)/100,
@@ -123,13 +133,18 @@
             //build up price hash
             if (data[size].price !== '' && data[size].price !== '0') {
                 prices.push(price);
-                container.appendChild(getResult(size.substr(0, 3), price, pieces));
+                list.push({
+                    size: size.substr(0, 3),
+                    price: price,
+                    pieces: pieces
+                });
             }
         }
+        setContent(container, list, prices);
 
         container = prices.length ? container : $.create('div');
 
-        setBadeges(container, prices);
+        //setBadeges(container, prices);
         return container;
     };
 
