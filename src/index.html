@@ -1,0 +1,125 @@
+<!DOCTYPE html manifest="manifest.appcache">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Pizza</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+        <style type="text/css" media="screen">
+            .container-fluid {
+               padding: 14px;
+               overflow: scroll;
+            }
+
+            .row {
+               margin-bottom: 14px;
+            }
+
+            .row-label {
+               line-height: 44px;
+               font-size: 20px;
+            }
+
+            .col-xs-4 {
+               padding-left: 10px;
+               padding-right: 10px;
+            }
+
+            .container .row {
+               padding: 10px;
+               margin-bottom: 0;
+
+            }
+
+            .container .label {
+               line-height: 15px;
+            }
+        </style>
+
+        <!-- favicon -->
+        <link rel="shortcut icon" href="img/favicon.ico">
+    </head>
+    <body>
+        <div class="container-fluid">
+
+            <!-- small -->
+            <div class="row">
+              <div class="col-xs-3 row-label">
+                Small
+              </div>
+              <div class="col-xs-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-lg" name="diameter_small" placeholder="size" value="22" tabindex="1">
+                        <span class="input-group-addon">Ø</span>
+                    </div>
+              </div>
+              <div class="col-xs-5">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-lg" name="price_small" placeholder="price" value="" ttabindex="1" autofocus>
+                        <span class="input-group-addon">€</span>
+                  </div>
+              </div>
+            </div>
+
+            <!-- medium -->
+            <div class="row">
+              <div class="col-xs-3 row-label">
+                    Medium
+              </div>
+              <div class="col-xs-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-lg" name="diameter_medium" placeholder="size" value="25" tabindex="1">
+                        <span class="input-group-addon">Ø</span>
+                    </div>
+              </div>
+              <div class="col-xs-5">
+                    <div class="input-group">
+                       <input type="text" class="form-control input-lg" name="price_medium" placeholder="price" value="" tabindex="1">
+                        <span class="input-group-addon">€</span>
+                  </div>
+              </div>
+            </div>
+
+            <!-- large -->
+            <div class="row">
+              <div class="col-xs-3 row-label">
+                Large
+              </div>
+              <div class="col-xs-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-lg" name="diameter_large" placeholder="size" value="30" tabindex="1">
+                        <span class="input-group-addon">Ø</span>
+                    </div>
+              </div>
+              <div class="col-xs-5">
+                    <div class="input-group">
+                       <input type="text" class="form-control input-lg" name="price_large" placeholder="price" value="" ttabindex="1">
+                        <span class="input-group-addon">€</span>
+                  </div>
+              </div>
+            </div>
+
+            <!-- name and button -->
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="button-grp">
+                            <button type="button" class="btn btn-default btn-primary btn-lg btn-block" id="analyze">Analyze</button>
+                            <button type="button" class="btn btn-default btn-lg btn-block" id="reset">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12" id="results">
+                </div>
+            </div>
+
+        </div>
+
+        <script async src="js/pizza.js"></script>
+
+    </body>
+</html>
