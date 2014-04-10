@@ -2,26 +2,28 @@
 
     'use strict';
 
-    var horst = function (obj) {
+    var counter = 1;
 
-        var node = document.createElement(obj);
-        return {
-            find: function (selector) {
-                return node.querySelector(selector);
-            },
-            append: function (obj) {
-                node.appendChild(obj.node || document.createElement(obj));
-                return this;
-            },
-            inner: function (string) {
-                node.innerText = string;
-                return this;
-            },
-            node: function () {
-                return node;
-            }
-        }
-    };
+    // var horst = function (obj) {
+
+    //     var node = document.createElement(obj);
+    //     return {
+    //         find: function (selector) {
+    //             return node.querySelector(selector);
+    //         },
+    //         append: function (obj) {
+    //             node.appendChild(obj.node || document.createElement(obj));
+    //             return this;
+    //         },
+    //         inner: function (string) {
+    //             node.innerText = string;
+    //             return this;
+    //         },
+    //         node: function () {
+    //             return node;
+    //         }
+    //     };
+    // };
 
 
     var $ = {
@@ -60,8 +62,18 @@
 
     var getContainer = function () {
         var cont = $.create('div');
-        cont.className = 'container panel panel-default';
+        cont.className = 'result container panel panel-default';
+
+        var heading = $.create('div');
+        heading.className = 'panel-heading';
+        var body = $.create('div');
+        body.className = 'panel-body';
+        cont.appendChild(heading);
+        cont.appendChild(body);
+
+
         return cont;
+        //return $.find('#results').className;
     };
 
     var setContent = function (container, list, prices) {
@@ -97,28 +109,29 @@
             row.appendChild(nlabel);
             row.appendChild(npieces);
 
-            container.appendChild(row);
+            container.querySelector('.panel-body').appendChild(row);
         });
+        container.querySelector('.panel-heading').innerHTML = '#' + counter++;
     };
 
 
-    var setBadeges = function (container, prices) {
-        var max = Math.max.apply(null, prices),
-            min = Math.min.apply(null, prices),
-            worst = container.querySelector('.label[data-price="' + max + '"]'),
-            best = container.querySelector('.label[data-price="' + min + '"]');
+    // var setBadeges = function (container, prices) {
+    //     var max = Math.max.apply(null, prices),
+    //         min = Math.min.apply(null, prices),
+    //         worst = container.querySelector('.label[data-price="' + max + '"]'),
+    //         best = container.querySelector('.label[data-price="' + min + '"]');
 
-        //set worst first in case only one prices was entered
-        if (best && worst) {
-            best.innerHTML = 'best';
-            best.className = best.className + ' label-success';
+    //     //set worst first in case only one prices was entered
+    //     if (best && worst) {
+    //         best.innerHTML = 'best';
+    //         best.className = best.className + ' label-success';
 
-            if (min !== max) {
-                worst.innerHTML = 'worst';
-                worst.className = worst.className + ' label-danger';
-            }
-        }
-    };
+    //         if (min !== max) {
+    //             worst.innerHTML = 'worst';
+    //             worst.className = worst.className + ' label-danger';
+    //         }
+    //     }
+    // };
 
 
     var getNode = function (data) {

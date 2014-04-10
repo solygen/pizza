@@ -9,13 +9,20 @@
         <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
         <style type="text/css" media="screen">
 
+
+            body {
+                background-color: #E6E6E6;
+                padding: 10px;
+            }
+
             .outer {
-               max-width: 500px;
+                border-radius: 8px;
                overflow: auto;
+               background-color: white;
+               max-width: 500px;
+               height: 100%;
                padding: 14px;
                margin: auto;
-               min-width: 400px;
-
             }
 
             .row {
@@ -23,7 +30,7 @@
             }
 
             .row .input-lg {
-                padding-left: 12px;
+                padding-left: 6px;
                 padding-right: 8px;
             }
 
@@ -53,7 +60,7 @@
             }
 
             .green>.price {
-                color: green;
+                color: rgb(25, 211, 25);
                 font-weight: 500;
             }
 
@@ -67,6 +74,19 @@
             .container>.row>div {
                 padding-left: 6px;
                 padding-right: 6px;
+
+            }
+
+            #results {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .container.result {
+                padding-left: 0;
+                padding-right: 0;
+                width: 100%;
+                margin-bottom: 15px;
             }
 
         </style>
@@ -91,13 +111,13 @@
                   </div>
                   <div class="col-xs-4">
                         <div class="input-group">
-                            <input type="text" class="form-control input-lg" name="diameter_small" placeholder="size" value="22" tabindex="1">
+                            <input type="number" class="form-control input-lg" min="0" max="60" name="diameter_small" placeholder="size" value="22" tabindex="1">
                             <span class="input-group-addon">Ø</span>
                         </div>
                   </div>
                   <div class="col-xs-5">
                         <div class="input-group">
-                            <input type="text" class="form-control input-lg" name="price_small" placeholder="price" value="" ttabindex="1" autofocus>
+                            <input type="number" class="form-control input-lg" min="0" max="60" name="price_small" placeholder="price" value="" tabindex="1" autofocus>
                             <span class="input-group-addon">€</span>
                       </div>
                   </div>
@@ -110,13 +130,13 @@
                   </div>
                   <div class="col-xs-4">
                         <div class="input-group">
-                            <input type="text" class="form-control input-lg" name="diameter_medium" placeholder="size" value="25" tabindex="1">
+                            <input type="number" class="form-control input-lg" min="0" max="60" name="diameter_medium" placeholder="size" value="25" tabindex="1">
                             <span class="input-group-addon">Ø</span>
                         </div>
                   </div>
                   <div class="col-xs-5">
                         <div class="input-group">
-                           <input type="text" class="form-control input-lg" name="price_medium" placeholder="price" value="" tabindex="1">
+                           <input type="number" class="form-control input-lg" min="0" max="60" name="price_medium" placeholder="price" value="" tabindex="1">
                             <span class="input-group-addon">€</span>
                       </div>
                   </div>
@@ -129,13 +149,13 @@
                   </div>
                   <div class="col-xs-4">
                         <div class="input-group">
-                            <input type="text" class="form-control input-lg" name="diameter_large" placeholder="size" value="30" tabindex="1">
+                            <input type="number" class="form-control input-lg" min="0" max="60" name="diameter_large" placeholder="size" value="30" tabindex="1">
                             <span class="input-group-addon">Ø</span>
                         </div>
                   </div>
                   <div class="col-xs-5">
                         <div class="input-group">
-                           <input type="text" class="form-control input-lg" name="price_large" placeholder="price" value="" ttabindex="1">
+                           <input type="number" class="form-control input-lg" min="0" max="60" name="price_large" placeholder="price" value="" tabindex="1">
                             <span class="input-group-addon">€</span>
                       </div>
                   </div>
@@ -152,9 +172,7 @@
                 </div>
 
 
-                <div class="row">
-                    <div class="col-xs-12 panel panel-default" id="results">
-                    </div>
+                <div class="row" id="results">
                 </div>
 
             </div>
