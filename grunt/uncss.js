@@ -1,11 +1,20 @@
 module.exports = {
       dist: {
         files: {
-          'src/bootstrap.min.css': ['src/index.html']
+            'builds/website/lib/bootstrap/css/bootstrap.min.css': ['src/index.html'],
+
         },
         options: {
-          ignore: ['.panel', '.panel-default', '.panel-heading', '.panel-body', '.container']
+            ignore: [
+                '.panel',
+                '.panel-default',
+                '.panel-heading',
+                '.panel-body',
+                '.container',
+                '.col-xs-2',
+                '.col-xs-3',
+                '.col-xs-4'
+            ]
         }
-      }
-
+    }
 };

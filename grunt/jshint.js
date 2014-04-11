@@ -1,3 +1,3 @@
 module.exports = {
-    files: ['src/*.js']
+    files: ['src/js/**.js']
 };
