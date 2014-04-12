@@ -13,7 +13,8 @@ module.exports = {
                 '.container',
                 '.col-xs-2',
                 '.col-xs-3',
-                '.col-xs-4'
+                '.col-xs-4',
+                '.panel-default>.panel-heading'
             ]
         }
     }

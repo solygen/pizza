@@ -14,6 +14,7 @@ module.exports = function (grunt) {
         uglify: require('./grunt/uglify.js'),
         htmlmin: require('./grunt/htmlmin.js'),
         uncss: require('./grunt/uncss.js'),
+        manifest: require('./grunt/manifest.js'),
         clean: ['./website']
     });
 
@@ -22,9 +23,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-manifest');
     grunt.loadNpmTasks('grunt-uncss');
 
     // is called without any further parameter.
     grunt.registerTask('default', ['jshint']);
-    grunt.registerTask('build', ['jshint', 'clean', 'uncss', 'uglify', 'copy']);
+    grunt.registerTask('build', ['jshint', 'clean', 'uncss', 'uglify', 'copy', 'manifest']);
 };

@@ -199,6 +199,23 @@
         $.find('#results').innerHTML = '';
     });
 
+    // Check if a new cache is available on page load.
+    // stolen from http://www.html5rocks.com/de/tutorials/appcache/beginner/
+    window.addEventListener('load', function () {
+
+        window.applicationCache.addEventListener('updateready', function () {
+            if (window.applicationCache.status === window.applicationCache.UPDATEREADY) {
+                // Browser downloaded a new app cache.
+                // Swap it in and reload the page to get the new hotness.
+                window.applicationCache.swapCache();
+                if (confirm('A new version of this site is available. Load it?')) {
+                    window.location.reload();
+                }
+            }
+        }, false);
+    }, false);
+
+
     // var cache = {
 
     //     set: function (key, value) {
