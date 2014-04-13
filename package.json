@@ -13,6 +13,9 @@
         "grunt-contrib-clean": "~0.5",
         "grunt-contrib-htmlmin": "~0.2",
         "grunt-manifest": "~0.4",
+        "grunt-contrib-cssmin": "~0.9",
+        "grunt-html-smoosher": "~0.1",
+        "grunt-contrib-clean": "~0.5",
         "grunt-uncss": "~0.3"
     }
 }

@@ -9,24 +9,46 @@ module.exports = function (grunt) {
     // Initializes the Grunt tasks with the following settings
     grunt.initConfig({
         pkg: pkg,
-        jshint: require('./grunt/jshint.js'),
+        clean: require('./grunt/clean.js'),
         copy: require('./grunt/copy.js'),
-        uglify: require('./grunt/uglify.js'),
+        cssmin: require('./grunt/cssmin.js'),
         htmlmin: require('./grunt/htmlmin.js'),
-        uncss: require('./grunt/uncss.js'),
+        jshint: require('./grunt/jshint.js'),
         manifest: require('./grunt/manifest.js'),
-        clean: ['./website']
+        smoosher: require('./grunt/smoosher.js'),
+        uglify: require('./grunt/uglify.js'),
+        uncss: require('./grunt/uncss.js')
     });
 
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-html-smoosher');
     grunt.loadNpmTasks('grunt-manifest');
     grunt.loadNpmTasks('grunt-uncss');
 
     // is called without any further parameter.
     grunt.registerTask('default', ['jshint']);
-    grunt.registerTask('build', ['jshint', 'clean', 'uncss', 'uglify', 'copy', 'manifest']);
+    grunt.registerTask('build', [
+        //check jss
+        'jshint',
+        //clean old build
+        'clean',
+        //copy root and img files
+        'copy',
+        //remove unused bootstrap styles
+        'uncss',
+        //minify html/js/css
+        'htmlmin',
+        'uglify',
+        'cssmin',
+        //add external js/css inline
+        'smoosher',
+        'clean:tmp',
+        //create manifest file
+        'manifest'
+    ]);
 };
