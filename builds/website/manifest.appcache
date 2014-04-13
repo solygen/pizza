@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Time: Sat Apr 12 2014 14:46:27 GMT+0200 (CEST)
+# Time: Sun Apr 13 2014 07:56:16 GMT+0200 (CEST)
 
 CACHE:
 index.html
@@ -12,8 +12,8 @@ img/apple-touch-icon-57x57.png
 img/apple-touch-icon-72x72.png
 img/apple-touch-icon-76x76.png
 img/apple-touch-icon.png
-js/pizza.js
-lib/bootstrap/css/bootstrap.min.css
+img/pizza-pd.png
+img/pizza_flat_pd.png
 
 NETWORK:
 http://*
